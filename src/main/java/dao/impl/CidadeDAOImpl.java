@@ -25,7 +25,7 @@ public class CidadeDAOImpl extends GenericDAOImpl<Integer, Cidade> implements Ci
                 .getResultList();
     }
 
-    //Busca cidade por parte do nome e retonr
+    //Busca Cidade por parte do nome e retorna quantidade encontrada
     @Override
     public Integer countCidadesByName(String nome) {
         return em.createQuery("select count(c) from Cidade c where c.nome like concat('%', :nome, '%')", Integer.class)

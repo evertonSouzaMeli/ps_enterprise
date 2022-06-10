@@ -49,6 +49,5 @@ public class Main {
         //estadoDAO.save(estado);
 
         estadoDAO.findAll().stream().map(Estado::toString).forEachOrdered(System.out::println);
-
     }
 }
