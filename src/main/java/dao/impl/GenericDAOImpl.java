@@ -43,5 +43,4 @@ public abstract class GenericDAOImpl<K, V> implements GenericDAO<K,V> {
     public List<V> findAll(){
         return em.createQuery("from "+ clazz.getName(), clazz).getResultList();
     }
-
 }
