@@ -13,7 +13,7 @@ public class BairroDAOImpl extends GenericDAOImpl<Integer, Bairro> implements Ba
         super(em);
     }
 
-    //Busca Logradouros por nome do Bairro
+    //Busca Logradouros por nome do Bairro(Exercicio 4c)
     @Override
     public List<Logradouro> findAllLogradouroByBairroName(String nome) {
         return em.createQuery("from Logradouro l where l.bairro.nome = :nome order by l.bairro.nome asc", Logradouro.class)

@@ -16,7 +16,7 @@ public class CidadeDAOImpl extends GenericDAOImpl<Integer, Cidade> implements Ci
     }
 
 
-    //Busca Cidade por nome sem diferenciar maiscula da miniscula
+    //Busca Cidade por nome sem diferenciar maiscula da miniscula(Exercicio 4a)
     @Override
     public List<Cidade> findCidadeByNameIgnoreCase(String nome){
         return em.createQuery("Select c from Cidade c where lower(c.nome) = lower(:nome)", Cidade.class)
@@ -25,7 +25,7 @@ public class CidadeDAOImpl extends GenericDAOImpl<Integer, Cidade> implements Ci
                 .getResultList();
     }
 
-    //Busca Cidade por parte do nome e retorna quantidade encontrada
+    //Busca Cidade por parte do nome e retorna quantidade encontrada(Exercicio 4b)
     @Override
     public Integer countCidadesByName(String nome) {
         return em.createQuery("select count(c) from Cidade c where c.nome like concat('%', :nome, '%')", Integer.class)
