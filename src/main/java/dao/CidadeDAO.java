@@ -7,4 +7,6 @@ import java.util.List;
 public interface CidadeDAO extends GenericDAO<Integer, Cidade>{
 
     List<Cidade> findCidadeByNameIgnoreCase(String nome);
+
+    Integer countCidadesByName(String nome);
 }

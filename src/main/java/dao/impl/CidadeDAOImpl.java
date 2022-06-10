@@ -17,10 +17,19 @@ public class CidadeDAOImpl extends GenericDAOImpl<Integer, Cidade> implements Ci
 
 
     //Busca Cidade por nome sem diferenciar maiscula da miniscula
+    @Override
     public List<Cidade> findCidadeByNameIgnoreCase(String nome){
-        return em.createQuery("Select c from Cidade c where c.nome = :nome")
-                .setParameter("nome", nome.toLowerCase(Locale.ROOT))
+        return em.createQuery("Select c from Cidade c where lower(c.nome) = lower(:nome)", Cidade.class)
+                .setParameter("nome", nome)
                 .setMaxResults(50)
                 .getResultList();
+    }
+
+    //Busca cidade por parte do nome e retonr
+    @Override
+    public Integer countCidadesByName(String nome) {
+        return em.createQuery("select count(c) from Cidade c where c.nome like concat('%', :nome, '%')", Integer.class)
+                .setParameter("nome", nome)
+                .getSingleResult();
     }
 }

@@ -15,7 +15,7 @@ public class BairroDAOImpl extends GenericDAOImpl<Integer, Bairro> implements Ba
 
     @Override
     public List<Logradouro> findAllLogradouroByBairroName(String nome) {
-        return em.createQuery("from Logradouro l where l.bairro.nome = :nome order by l.bairro.nome asc ")
+        return em.createQuery("from Logradouro l where l.bairro.nome = :nome order by l.bairro.nome asc", Logradouro.class)
                 .setParameter("nome", nome)
                 .getResultList();
     }
